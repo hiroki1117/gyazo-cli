@@ -1,10 +1,22 @@
+# Weekly updates, grouped so each ecosystem opens at most one pull request.
+# Not covered: the go directive in go.mod, and the golangci-lint / GoReleaser versions in the workflows.
 version: 2
 updates:
   - package-ecosystem: gomod
     directory: /
     schedule:
       interval: weekly
+    groups:
+      go-modules:
+        patterns: ["*"]
+    commit-message:
+      prefix: "build(deps)"
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "ci(deps)"
