@@ -153,6 +153,15 @@ Dependencies flow `cmd → cli → (config, output, gyazo)`. The `gyazo` package
 `gy --help` covers how to get started and the common rules (argument format, output streams, exit codes). Each command's `--help` covers its output format and examples.
 For AI agents, start by having them read `gy --help`.
 
+### Agent skill
+
+[`skills/gy/`](skills/gy/SKILL.md) is an [Agent Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) that teaches AI agents when to use each command, which upload and delete rules keep screenshots safe, and how to handle errors.
+To use it with Claude Code, copy or link the directory into your skills directory:
+
+```bash
+ln -s "$PWD/skills/gy" ~/.claude/skills/gy
+```
+
 ### Uploads
 
 The file is streamed with an exact `Content-Length`, so large files are not read into memory. Only standard input is buffered, because its size is unknown.
@@ -196,3 +205,4 @@ git tag v0.1.0
 git push origin v0.1.0
 make snapshot   # Build the same artifacts into dist/ without publishing (requires goreleaser)
 ```
+
